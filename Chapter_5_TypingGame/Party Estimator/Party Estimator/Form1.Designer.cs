@@ -63,7 +63,7 @@
             // checkBoxDecoration
             // 
             this.checkBoxDecoration.AutoSize = true;
-            this.checkBoxDecoration.Location = new System.Drawing.Point(25, 95);
+            this.checkBoxDecoration.Location = new System.Drawing.Point(25, 79);
             this.checkBoxDecoration.Name = "checkBoxDecoration";
             this.checkBoxDecoration.Size = new System.Drawing.Size(115, 17);
             this.checkBoxDecoration.TabIndex = 1;
@@ -74,7 +74,7 @@
             // checkBoxOption
             // 
             this.checkBoxOption.AutoSize = true;
-            this.checkBoxOption.Location = new System.Drawing.Point(25, 136);
+            this.checkBoxOption.Location = new System.Drawing.Point(25, 102);
             this.checkBoxOption.Name = "checkBoxOption";
             this.checkBoxOption.Size = new System.Drawing.Size(96, 17);
             this.checkBoxOption.TabIndex = 2;
@@ -91,24 +91,24 @@
             this.label1.Size = new System.Drawing.Size(108, 13);
             this.label1.TabIndex = 3;
             this.label1.Text = "Number of People";
-           // this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // costLabel
             // 
             this.costLabel.AutoSize = true;
-            this.costLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.costLabel.Location = new System.Drawing.Point(50, 210);
+            this.costLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.costLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.costLabel.Location = new System.Drawing.Point(25, 132);
             this.costLabel.Name = "costLabel";
-            this.costLabel.Size = new System.Drawing.Size(32, 13);
+            this.costLabel.Size = new System.Drawing.Size(51, 20);
             this.costLabel.TabIndex = 4;
-            this.costLabel.Text = "Cost";
-           // this.costLabel.Click += new System.EventHandler(this.label2_Click);
+            this.costLabel.Text = "Cost:";
+            this.costLabel.Click += new System.EventHandler(this.costLabel_Click);
             // 
             // costText
             // 
             this.costText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.costText.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.costText.Location = new System.Drawing.Point(91, 207);
+            this.costText.Location = new System.Drawing.Point(29, 155);
             this.costText.Name = "costText";
             this.costText.ReadOnly = true;
             this.costText.Size = new System.Drawing.Size(100, 24);
@@ -118,7 +118,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(184, 197);
             this.Controls.Add(this.costText);
             this.Controls.Add(this.costLabel);
             this.Controls.Add(this.label1);
@@ -126,6 +126,8 @@
             this.Controls.Add(this.checkBoxDecoration);
             this.Controls.Add(this.peopleCounter);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "formPartyPlanner";
             this.Text = "Party Planner";
             this.Load += new System.EventHandler(this.Form1_Load);

@@ -7,30 +7,37 @@ namespace Party_Estimator
 {
     class DinnerParty
     {
-        public int NumberOfPeople;
-        public bool HealthyOption;
-        public bool FancyDecorations;
+        private int NumberOfPeople;
+        private bool HealthyOption;
+        private bool FancyDecorations;
 
-        public decimal CostOfDecoration;
-        public decimal CostOfDrinks;
+        private decimal CostOfDecoration;
+        private decimal CostOfDrinks;
         //public decimal CostOfFood;
-        public decimal DiscountMultiplier = 1;
-        public decimal Fees = 0M;
+        private decimal DiscountMultiplier = 1;
+        private decimal Fees = 0M;
 
 
-        public const int CostOfFood = 25;
-        
-        public const int CostOfNonAlcoholicDrinks = 5;
-        public const int CostOfAlcoholicDrinks = 20; 
-        
-        public const decimal CostOfFancyDecoration = 15;
-        public const decimal CostOfNotFancyDecoration = 7.50M;
-        
-        public const decimal HealthyOptionDiscount = 0.95M;
+        private const int CostOfFood = 25;
+
+        private const int CostOfNonAlcoholicDrinks = 5;
+        private const int CostOfAlcoholicDrinks = 20;
+
+        private const decimal CostOfFancyDecoration = 15;
+        private const decimal CostOfNotFancyDecoration = 7.50M;
+
+        private const decimal HealthyOptionDiscount = 0.95M;
         public const decimal NoHealthyOptionDiscount = 1.00M;
 
-        public const int FeeOfFancyDecoration = 50;
-        public const int FeeOfNotFancyDecoration = 30;
+        private const int FeeOfFancyDecoration = 50;
+        private const int FeeOfNotFancyDecoration = 30;
+        private int p;
+
+        public DinnerParty(int p)
+        {
+            // TODO: Complete member initialization
+            this.NumberOfPeople = p;
+        }
 
 
         public void SetHealthyOption(bool p)
@@ -74,6 +81,11 @@ namespace Party_Estimator
        public decimal CalculateCosts()
        {
            return (((NumberOfPeople*(CostOfFood + CostOfDrinks + CostOfDecoration)) + Fees)*DiscountMultiplier);
+       }
+
+      public void SetNumberOfPeople(int p)
+       {
+           this.NumberOfPeople=p;
        }
     }
 }

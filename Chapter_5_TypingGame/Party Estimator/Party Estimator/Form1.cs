@@ -17,7 +17,7 @@ namespace Party_Estimator
         {
             
             InitializeComponent();
-            dinnerParty = new DinnerParty() { NumberOfPeople = 5 }; 
+            dinnerParty = new DinnerParty(5); 
             dinnerParty.SetHealthyOption(false);
             dinnerParty.SetDecorationType(false);
             //dinnerParty.CalculateCostOfDecorations(true); 
@@ -41,7 +41,7 @@ namespace Party_Estimator
 
         private void peopleCounter_ValueChanged(object sender, EventArgs e)
         {
-            dinnerParty.NumberOfPeople = (int)peopleCounter.Value; 
+            dinnerParty.SetNumberOfPeople((int)peopleCounter.Value); 
             DisplayDinnerPartyCost();
         }
 
@@ -56,6 +56,11 @@ namespace Party_Estimator
         {
             dinnerParty.SetHealthyOption(checkBoxOption.Checked);
             DisplayDinnerPartyCost();
+        }
+
+        private void costLabel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
