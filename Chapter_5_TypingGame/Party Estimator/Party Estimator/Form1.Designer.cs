@@ -80,6 +80,7 @@
             this.checkBoxOption.TabIndex = 2;
             this.checkBoxOption.Text = "Healthy Option";
             this.checkBoxOption.UseVisualStyleBackColor = true;
+            this.checkBoxOption.CheckedChanged += new System.EventHandler(this.checkBoxOption_CheckedChanged);
             // 
             // label1
             // 
@@ -90,7 +91,7 @@
             this.label1.Size = new System.Drawing.Size(108, 13);
             this.label1.TabIndex = 3;
             this.label1.Text = "Number of People";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+           // this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // costLabel
             // 
@@ -101,7 +102,7 @@
             this.costLabel.Size = new System.Drawing.Size(32, 13);
             this.costLabel.TabIndex = 4;
             this.costLabel.Text = "Cost";
-            this.costLabel.Click += new System.EventHandler(this.label2_Click);
+           // this.costLabel.Click += new System.EventHandler(this.label2_Click);
             // 
             // costText
             // 

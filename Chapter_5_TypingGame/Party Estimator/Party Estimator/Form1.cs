@@ -11,45 +11,33 @@ namespace Party_Estimator
 {
     public partial class formPartyPlanner : Form
     {
+        DinnerParty dinnerParty;
+        
         public formPartyPlanner()
         {
-            DinnerParty dinnerParty;
+            
             InitializeComponent();
             dinnerParty = new DinnerParty() { NumberOfPeople = 5 }; 
-            dinnerParty.SetHealthyOption(false); 
-            dinnerParty.CalculateCostOfDecorations(true); 
+            dinnerParty.SetHealthyOption(false);
+            dinnerParty.SetDecorationType(false);
+            //dinnerParty.CalculateCostOfDecorations(true); 
             DisplayDinnerPartyCost();
         }
 
         private void DisplayDinnerPartyCost()
         {
-            decimal Cost = DinnerParty.CalculateCosts();
-            costLabel.Text = Cost.ToString("c");
+            decimal Cost = dinnerParty.CalculateCosts();
+            costText.Text = Cost.ToString("c");
         }
 
-        internal static decimal CalculateCosts()
-        {
-            throw new NotImplementedException();
-        }
-        private void DisplayDinnerPartyCost()
-        {
-            throw new NotImplementedException();
-        }
+        
 
         private void Form1_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void peopleCounter_ValueChanged(object sender, EventArgs e)
         {
@@ -59,7 +47,15 @@ namespace Party_Estimator
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            CalculateCosts();
+            
+           dinnerParty.SetDecorationType(checkBoxDecoration.Checked);
+           DisplayDinnerPartyCost();
+        }
+
+        private void checkBoxOption_CheckedChanged(object sender, EventArgs e)
+        {
+            dinnerParty.SetHealthyOption(checkBoxOption.Checked);
+            DisplayDinnerPartyCost();
         }
     }
 }
