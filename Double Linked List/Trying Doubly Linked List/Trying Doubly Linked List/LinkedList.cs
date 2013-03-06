@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace Trying_Doubly_Linked_List
 {
@@ -12,77 +13,141 @@ namespace Trying_Doubly_Linked_List
         Node Current = null;
 
 
-        public string Add(string word)
+        public Node Add(string word)
         {
             Node newNode =new Node();
             newNode.Word = word;
-
+            newNode.next = null;
+            
             if (First == null)
             {
+                newNode.previous = null;
                 First = newNode;
                 Last = First;
-                Current = First;
-                Current.next = null;
-                Current.previous = null;
+                //Current = First;
+                //Current.next = null;
+                
                 
             }
             else
             {
-                Current = newNode;
-                Last.next = Current;
-                Current.previous = Last;
-                Current.next = null;
-                Last = Current;
+                //Current = newNode;
+                Last.next = newNode;
+                newNode.previous = Last;
+                //Current.next = null;
+                Last = newNode;
 
             }
-            return Current.Word;
+            return Last;
         }
 
-       public string PreviousValue()
-       {
-          if (Current.previous != null)
-          {
-              Current = Current.previous;
-          }
-           return Current.Word;
-       }
+       //public string PreviousValue()
+       //{
+       //   if (Current.previous != null)
+       //   {
+       //       Current = Current.previous;
+       //   }
+       //    return Current.Word;
+       //}
 
-       public string NextValue()
+       //public string NextValue()
+       //{
+       //    if(Current.next != null)
+       //    {
+       //        Current = Current.next;
+       //    }
+       //    return Current.Word;
+       //}
+
+       public Node DeleteNode(Node currentPointer)
        {
-           if(Current.next != null)
+           String CurrentLocation = WhereIsCurrent(currentPointer);
+
+           //MessageBox.Show(CurrentLocation);
+           //return currentPointer;
+
+           switch (CurrentLocation)
            {
-               Current = Current.next;
+               case "AtFirstNode":
+                   MessageBox.Show("Deleting First node");
+                   //First = currentPointer.next;
+                   First = First.next;
+                   First.previous = null;
+                   currentPointer.next = null;
+                   currentPointer = First;
+                   //currentPointer = currentPointer.next;
+                   //First = Current.next;
+                   //First.previous = null;
+                   //Current.previous = null;
+                   //Current.next = null;
+                   //Current = First;
+                   break;
+               case "AtLastNode":
+                   MessageBox.Show("Deleting last node");
+                   Last = Last.previous;
+                   Last.next = null;
+                   currentPointer.previous = null;
+                   currentPointer = Last;
+                   //Last = Current.previous;
+                   //Last.next = null;
+                   //Current.previous = null;
+                   //Current.next = null;
+                   //Current = Last;
+                   break;
+               case "InTheMiddle":
+                   MessageBox.Show("Deleting Middle node");
+                   currentPointer.previous.next = currentPointer.next;
+                   currentPointer.next.previous = currentPointer.previous;
+                   Current = currentPointer;
+                   currentPointer = Current.next;
+                   Current.next = Current.previous = null;
+                   break;   
            }
-           return Current.Word;
+           
+           
+           //if( (Current.next != null) && (Current.next != null) )
+           // {
+           //    Current.previous.next = Current.next;
+           //     Current.next.previous = Current.previous.previous;
+           //     Current = Current.next;
+           //  }
+           //else if ( Current.next == null )
+           //{
+           //    Last = Current.previous;
+           //    Last.next = null;
+           //    Current.previous = null;
+           //    Current.next = null;
+           //    Current = Last;
+               
+           //  }
+           // else if( (Current.previous == null) )
+           //{
+           //    First = Current.next;
+           //    First.previous = null;
+           //    Current.previous = null;
+           //    Current.next = null;
+           //    Current = First;
+               
+           //  }
+          return currentPointer;
        }
 
-       public string DeleteNode()
+       private string WhereIsCurrent(Node currentPointer)
        {
-           if( (Current.next != null) && (Current.next != null) )
-            {
-               Current.previous.next = Current.next;
-                Current.next.previous = Current.previous.previous;
-                Current = Current.next;
-             }
-           else if ( Current.next == null )
+           if (currentPointer == First && currentPointer == Last)
            {
-               Last = Current.previous;
-               Last.next = null;
-               Current.previous = null;
-               Current.next = null;
-               Current = Last;
-               
-             }
-            else if( (Current.previous == null) )
+               return "OnlyOneNode";
+           }
+           if(currentPointer.previous == null)
            {
-               First = Current.next;
-               First.previous = null;
-               Current.previous = null;
-               Current.next = null;
-               Current = First;
-               
-             }
-           return Current.Word;
+               return "AtFirstNode";
+           }
+           if (currentPointer.next == null)
+           {
+               return "AtLastNode";
+           }
+           return "InTheMiddle";
+
        }
     }
 }
