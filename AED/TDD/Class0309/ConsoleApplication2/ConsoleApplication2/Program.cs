@@ -5,6 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using TweetSharp;
+using TweetSharp.Model;
+using System.Xml;
+using Newtonsoft.Json;
+
 
 
 namespace ConsoleApplication2
@@ -26,41 +30,41 @@ namespace ConsoleApplication2
             //IEnumerable<Tweet> mytimneline = TT.GetHomeTimeline(null, 2);
             //Console.ReadKey();
 
-            //var service = new TwitterService("tedRo766zL7mr7TKZkOugA", "WREOp5SZ71EtLCt3T4RboUv1IrkUpPkCpcBxkAGk8");
-            var service = new TwitterService("bWDpCLO2mIByqMYoaRh2Cg", "X4veUKVWhB09wipWhVpaVhXvLDHqzIjnOLOGXxiY8Y");
-            //service.AuthenticateWith("21985278-dud1wSertHCQYTUK5ta5AA0ciqWB31ZsT8Dt8DJg", "yPDp2TTOOhQj6XDxX7P5TxmNtHZcQ6sJumth8DVzRk");
-            service.AuthenticateWith("25963011-QuJkeaEcXqB92bhMxoIJHKBLFHP1rPZysu6K68IqZ", "pY0TXRW8aIUSDfSUpJAzsQ2s2Oay2A0HBdiaK1Z8");
+            var service = new TwitterService("tedRo766zL7mr7TKZkOugA", "WREOp5SZ71EtLCt3T4RboUv1IrkUpPkCpcBxkAGk8");
+            //var service = new TwitterService("bWDpCLO2mIByqMYoaRh2Cg", "X4veUKVWhB09wipWhVpaVhXvLDHqzIjnOLOGXxiY8Y");
+            service.AuthenticateWith("21985278-dud1wSertHCQYTUK5ta5AA0ciqWB31ZsT8Dt8DJg", "yPDp2TTOOhQj6XDxX7P5TxmNtHZcQ6sJumth8DVzRk");
+            //service.AuthenticateWith("25963011-QuJkeaEcXqB92bhMxoIJHKBLFHP1rPZysu6K68IqZ", "pY0TXRW8aIUSDfSUpJAzsQ2s2Oay2A0HBdiaK1Z8");
             //var tweets = service.ListTweetsOnHomeTimeline(new ListTweetsOnHomeTimelineOptions());
             //var tweets = service.ListRetweetsOfMyTweets(new ListRetweetsOfMyTweetsOptions());
             //var tweets = service.ListFavoriteTweets(new ListFavoriteTweetsOptions());
             var tweets = service.ListTweetsMentioningMe(new ListTweetsMentioningMeOptions());
 
-            var MyTweetOptions = new SendTweetOptions();
-            MyTweetOptions.Status = "Hello World";
+            //var MyTweetOptions = new SendTweetOptions();
+            //MyTweetOptions.Status = "Hello World";
 
-            service.SendTweet(MyTweetOptions);
+            //service.SendTweet(MyTweetOptions);
             
-            //var myFriendLists = service.GetIncomingFriendRequests(new GetIncomingFriendRequestsOptions());
+            var myFriendLists = service.GetIncomingFriendRequests(new GetIncomingFriendRequestsOptions());
 
-            //foreach (var FriendLists in myFriendLists)
-            //{
-            //    var MyFriendOptions = new GetUserProfileForOptions();
-            //    MyFriendOptions.UserId = FriendLists;
-
-            //    var MyFriend = new GetUserProfile(MyFriendOptions);
-
-
-                //Console.WriteLine("{0} says", tweets.);
-                //Console.ReadKey();
-
-            //}
-
-            foreach (var tweet in tweets)
+            foreach (var FriendLists in myFriendLists)
             {
-                Console.WriteLine("{0} says '{1}'", tweet.Id, tweet.Text);
+                var MyFriendOptions = new GetUserProfileForOptions();
+                MyFriendOptions.UserId = FriendLists;
+
+                var MyFriend = service.GetUserProfileFor(MyFriendOptions);
+
+
+                Console.WriteLine("{0} says", MyFriend.ScreenName);
                 Console.ReadKey();
 
             }
+
+            //foreach (var tweet in tweets)
+            //{
+            //    Console.WriteLine("{0} says '{1}'", tweet.Id, tweet.Text);
+            //    Console.ReadKey();
+
+            //}
 
             //using TweetSharp;
 
