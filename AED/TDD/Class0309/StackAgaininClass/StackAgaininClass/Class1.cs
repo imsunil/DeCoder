@@ -5,16 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-
-    public class UnitTest
+public class UnitTest
     {
-        [Fact]
-        public void Test()
-        {
-            Assert.True(true);
-        }
-
-        [Fact]
+    [Fact]
         public void CreateEmptyStack_Succeeds()
         {
             Stack stack = new Stack();
@@ -63,36 +56,47 @@ using Xunit;
             Assert.Equal(1, stack.list.Count());
         }
 
+        [Fact]
+        public void PushIntegerElements_PopLIFOOrder()
+        {
+            Stack stack = new Stack();
+            stack.Push(42);
+            //Exception ex = Record.Exception(() => stack.Pop());
+
+            Assert.Equal(42, stack.Peek());
+           // Assert.Equal(1, stack.list.Count());
+        }
+
     }
 
-    public class Stack
+public class Stack
+{
+    public List<int> list = new List<int>();
+
+    publi
+
+    public void Push(int p)
     {
-        public List<int> list = new List<int>();
-        int count = 0;
-
-        public void Push(int p)
-        {
-           list.Insert(list.Count(), p);
-        }
-
-        public int Pop()
-        {
-           if (list.Count() == 0) throw new InvalidOperationException();
-
-           int re = list[list.Count()-1];
-           list.RemoveAt(list.Count()-1);
-           
-           return re;
-
-        }
-
-        public int Peek()
-        {
-            if (list.Count() == 0) throw new InvalidOperationException();
-            int re = list[list.Count() - 1];
-            
-            return re;
-        }
+        list.Insert(list.Count(), p);
     }
-   
 
+    public int Pop()
+    {
+        if (list.Count() == 0) throw new InvalidOperationException();
+
+        int re = list[list.Count() - 1];
+        list.RemoveAt(list.Count() - 1);
+
+        return re;
+
+    }
+
+    public int Peek()
+    {
+        if (list.Count() == 0) throw new InvalidOperationException();
+        int re = list[list.Count() - 1];
+
+        return re;
+    }
+
+}
