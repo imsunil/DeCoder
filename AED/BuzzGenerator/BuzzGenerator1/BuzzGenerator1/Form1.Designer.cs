@@ -34,9 +34,9 @@
             System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.ManualTextRadioButton = new System.Windows.Forms.RadioButton();
             this.BuzzConfigGroupBox = new System.Windows.Forms.GroupBox();
-            this.AutoTextRadioButton = new System.Windows.Forms.RadioButton();
-            this.AutoImageRadioButton = new System.Windows.Forms.RadioButton();
             this.NoneRadioButton = new System.Windows.Forms.RadioButton();
+            this.AutoImageRadioButton = new System.Windows.Forms.RadioButton();
+            this.AutoTextRadioButton = new System.Windows.Forms.RadioButton();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.TweetTextBox = new System.Windows.Forms.TextBox();
             this.TweetButton = new System.Windows.Forms.Button();
@@ -45,7 +45,7 @@
             this.FileTextBox = new System.Windows.Forms.TextBox();
             this.FolderTextBox = new System.Windows.Forms.TextBox();
             this.SelectFileButton = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.PicturesFolderButton = new System.Windows.Forms.Button();
             this.RetweetTextBox = new System.Windows.Forms.TextBox();
             this.RetweetsLabel = new System.Windows.Forms.Label();
             this.MentionsLabel = new System.Windows.Forms.Label();
@@ -74,6 +74,7 @@
             // 
             // BuzzConfigGroupBox
             // 
+            this.BuzzConfigGroupBox.Controls.Add(this.comboBox1);
             this.BuzzConfigGroupBox.Controls.Add(this.NoneRadioButton);
             this.BuzzConfigGroupBox.Controls.Add(this.AutoImageRadioButton);
             this.BuzzConfigGroupBox.Controls.Add(this.AutoTextRadioButton);
@@ -85,28 +86,6 @@
             this.BuzzConfigGroupBox.TabStop = false;
             this.BuzzConfigGroupBox.Text = "Buzz Configuration";
             this.BuzzConfigGroupBox.Enter += new System.EventHandler(this.groupBox1_Enter);
-            // 
-            // AutoTextRadioButton
-            // 
-            this.AutoTextRadioButton.AutoSize = true;
-            this.AutoTextRadioButton.Location = new System.Drawing.Point(17, 58);
-            this.AutoTextRadioButton.Name = "AutoTextRadioButton";
-            this.AutoTextRadioButton.Size = new System.Drawing.Size(106, 17);
-            this.AutoTextRadioButton.TabIndex = 1;
-            this.AutoTextRadioButton.Text = "Text - Automated";
-            this.AutoTextRadioButton.UseVisualStyleBackColor = true;
-            this.AutoTextRadioButton.CheckedChanged += new System.EventHandler(this.AutoTextRadioButton_CheckedChanged);
-            // 
-            // AutoImageRadioButton
-            // 
-            this.AutoImageRadioButton.AutoSize = true;
-            this.AutoImageRadioButton.Location = new System.Drawing.Point(17, 96);
-            this.AutoImageRadioButton.Name = "AutoImageRadioButton";
-            this.AutoImageRadioButton.Size = new System.Drawing.Size(123, 17);
-            this.AutoImageRadioButton.TabIndex = 2;
-            this.AutoImageRadioButton.Text = "Pictures - Automated";
-            this.AutoImageRadioButton.UseVisualStyleBackColor = true;
-            this.AutoImageRadioButton.CheckedChanged += new System.EventHandler(this.AutoImageRadioButton_CheckedChanged);
             // 
             // NoneRadioButton
             // 
@@ -120,6 +99,28 @@
             this.NoneRadioButton.Text = "None - Dashboard Only";
             this.NoneRadioButton.UseVisualStyleBackColor = true;
             this.NoneRadioButton.CheckedChanged += new System.EventHandler(this.NoneRadioButton_CheckedChanged);
+            // 
+            // AutoImageRadioButton
+            // 
+            this.AutoImageRadioButton.AutoSize = true;
+            this.AutoImageRadioButton.Location = new System.Drawing.Point(17, 96);
+            this.AutoImageRadioButton.Name = "AutoImageRadioButton";
+            this.AutoImageRadioButton.Size = new System.Drawing.Size(123, 17);
+            this.AutoImageRadioButton.TabIndex = 2;
+            this.AutoImageRadioButton.Text = "Pictures - Automated";
+            this.AutoImageRadioButton.UseVisualStyleBackColor = true;
+            this.AutoImageRadioButton.CheckedChanged += new System.EventHandler(this.AutoImageRadioButton_CheckedChanged);
+            // 
+            // AutoTextRadioButton
+            // 
+            this.AutoTextRadioButton.AutoSize = true;
+            this.AutoTextRadioButton.Location = new System.Drawing.Point(17, 58);
+            this.AutoTextRadioButton.Name = "AutoTextRadioButton";
+            this.AutoTextRadioButton.Size = new System.Drawing.Size(106, 17);
+            this.AutoTextRadioButton.TabIndex = 1;
+            this.AutoTextRadioButton.Text = "Text - Automated";
+            this.AutoTextRadioButton.UseVisualStyleBackColor = true;
+            this.AutoTextRadioButton.CheckedChanged += new System.EventHandler(this.AutoTextRadioButton_CheckedChanged);
             // 
             // chart1
             // 
@@ -140,7 +141,7 @@
             // TweetTextBox
             // 
             this.TweetTextBox.Location = new System.Drawing.Point(175, 36);
-            this.TweetTextBox.MaxLength = 10;
+            this.TweetTextBox.MaxLength = 140;
             this.TweetTextBox.Name = "TweetTextBox";
             this.TweetTextBox.Size = new System.Drawing.Size(293, 20);
             this.TweetTextBox.TabIndex = 3;
@@ -187,14 +188,14 @@
             this.SelectFileButton.Text = "Select File";
             this.SelectFileButton.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // PicturesFolderButton
             // 
-            this.button3.Location = new System.Drawing.Point(474, 105);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 8;
-            this.button3.Text = "Picture Folder";
-            this.button3.UseVisualStyleBackColor = true;
+            this.PicturesFolderButton.Location = new System.Drawing.Point(474, 105);
+            this.PicturesFolderButton.Name = "PicturesFolderButton";
+            this.PicturesFolderButton.Size = new System.Drawing.Size(75, 23);
+            this.PicturesFolderButton.TabIndex = 8;
+            this.PicturesFolderButton.Text = "Pictures Folder";
+            this.PicturesFolderButton.UseVisualStyleBackColor = true;
             // 
             // RetweetTextBox
             // 
@@ -249,12 +250,13 @@
             // 
             // timer1
             // 
+            this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(205, 141);
+            this.comboBox1.Location = new System.Drawing.Point(416, 129);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 15;
@@ -290,13 +292,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(572, 471);
-            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.FollowRequestLabel);
             this.Controls.Add(this.FollowRequestTextBox);
             this.Controls.Add(this.MentionsLabel);
             this.Controls.Add(this.MentionsTextBox);
             this.Controls.Add(this.RetweetsLabel);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.PicturesFolderButton);
             this.Controls.Add(this.SelectFileButton);
             this.Controls.Add(this.FolderTextBox);
             this.Controls.Add(this.FileTextBox);
@@ -332,7 +333,7 @@
         private System.Windows.Forms.TextBox FileTextBox;
         private System.Windows.Forms.TextBox FolderTextBox;
         private System.Windows.Forms.Button SelectFileButton;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button PicturesFolderButton;
         private System.Windows.Forms.TextBox RetweetTextBox;
         private System.Windows.Forms.Label RetweetsLabel;
         private System.Windows.Forms.Label MentionsLabel;
