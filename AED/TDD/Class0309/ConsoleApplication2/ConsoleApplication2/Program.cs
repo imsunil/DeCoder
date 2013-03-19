@@ -54,7 +54,7 @@ namespace ConsoleApplication2
                 var MyFriend = service.GetUserProfileFor(MyFriendOptions);
 
 
-                Console.WriteLine("{0} says", MyFriend.ScreenName);
+                Console.WriteLine("{0} says", FriendLists.ToString());
                 Console.ReadKey();
 
             }

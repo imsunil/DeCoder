@@ -114,7 +114,7 @@ namespace BuzzGenerator1
         {
             if (sender == DashboardRefreshTimer)
             {
-                label1.Text = DateTime.Now.ToLongTimeString();
+               // label1.Text = DateTime.Now.ToLongTimeString();
             }
 
         }

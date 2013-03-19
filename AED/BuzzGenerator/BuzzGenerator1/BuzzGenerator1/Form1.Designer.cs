@@ -29,11 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.ManualTextRadioButton = new System.Windows.Forms.RadioButton();
             this.BuzzConfigGroupBox = new System.Windows.Forms.GroupBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.NoneRadioButton = new System.Windows.Forms.RadioButton();
             this.AutoImageRadioButton = new System.Windows.Forms.RadioButton();
             this.AutoTextRadioButton = new System.Windows.Forms.RadioButton();
@@ -53,7 +54,6 @@
             this.FollowRequestLabel = new System.Windows.Forms.Label();
             this.FollowRequestTextBox = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.BuzzDashboardGroupBox = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.BuzzConfigGroupBox.SuspendLayout();
@@ -84,8 +84,17 @@
             this.BuzzConfigGroupBox.Size = new System.Drawing.Size(548, 161);
             this.BuzzConfigGroupBox.TabIndex = 1;
             this.BuzzConfigGroupBox.TabStop = false;
-            this.BuzzConfigGroupBox.Text = "Buzz Configuration";
+            this.BuzzConfigGroupBox.Text = "Tweet Configuration";
             this.BuzzConfigGroupBox.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(416, 129);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 15;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // NoneRadioButton
             // 
@@ -124,16 +133,16 @@
             // 
             // chart1
             // 
-            chartArea4.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.chart1.Legends.Add(legend4);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(237, 27);
             this.chart1.Name = "chart1";
-            series4.ChartArea = "ChartArea1";
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            this.chart1.Series.Add(series4);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart1.Series.Add(series2);
             this.chart1.Size = new System.Drawing.Size(300, 243);
             this.chart1.TabIndex = 2;
             this.chart1.Text = "chart1";
@@ -253,15 +262,6 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(416, 129);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 15;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
             // BuzzDashboardGroupBox
             // 
             this.BuzzDashboardGroupBox.Controls.Add(this.label1);
@@ -272,7 +272,7 @@
             this.BuzzDashboardGroupBox.Size = new System.Drawing.Size(548, 285);
             this.BuzzDashboardGroupBox.TabIndex = 16;
             this.BuzzDashboardGroupBox.TabStop = false;
-            this.BuzzDashboardGroupBox.Text = "Buzz Dashboard";
+            this.BuzzDashboardGroupBox.Text = "Insights Dashboard";
             this.BuzzDashboardGroupBox.Enter += new System.EventHandler(this.groupBox1_Enter_1);
             // 
             // label1
@@ -306,7 +306,7 @@
             this.Controls.Add(this.BuzzConfigGroupBox);
             this.Controls.Add(this.BuzzDashboardGroupBox);
             this.Name = "BuzzGeneratorForm";
-            this.Text = "Buzz Generator";
+            this.Text = "TweetInsights";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.BuzzConfigGroupBox.ResumeLayout(false);
             this.BuzzConfigGroupBox.PerformLayout();
