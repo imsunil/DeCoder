@@ -11,8 +11,10 @@ namespace BuzzGenerator1
     class MyTwitter
     {
         private int initialRetweets = 0;
+        private int initialTotalRetweets = 0;
         private int initialMentions = 0;
         private int initialFollowRequests = 0;
+        private long lastTweetID = 313821879632793601;
 
         public int Retweets = 0;
         public int Mentions = 0;
@@ -30,16 +32,81 @@ namespace BuzzGenerator1
         {
             service = new TwitterService(consumerKey, consumerSecret);
             service.AuthenticateWith(accessToken, accessTokenSecret);
+            //var service = new TwitterService("tedRo766zL7mr7TKZkOugA", "WREOp5SZ71EtLCt3T4RboUv1IrkUpPkCpcBxkAGk8");
+            //service.AuthenticateWith("21985278-dud1wSertHCQYTUK5ta5AA0ciqWB31ZsT8Dt8DJg", "yPDp2TTOOhQj6XDxX7P5TxmNtHZcQ6sJumth8DVzRk");
+            InitializeMetrics();
+
+        }
+
+        private void InitializeMetrics()
+        {
+            //lastTweetID = GetLastTweetID();
+            GetRetweetsSinceLastTweet();
+            GetMentionsSinceLastTweet();
+
+        }
+
+        private void GetMentionsSinceLastTweet()
+        {
+            ListTweetsMentioningMeOptions myMentionOptions = new ListTweetsMentioningMeOptions();
+            //myRetweetOptions.SinceId = lastTweetID;
+            //myRetweetOptions.Count = 100;
+            myMentionOptions.Count = 200;
+
+
+            var tweets = service.ListTweetsMentioningMe(myMentionOptions);
+
+
+            foreach (var tweet in tweets)
+            {
+                initialMentions = initialMentions + 1;
+
+            }
+            MessageBox.Show(initialMentions.ToString());
             
+        }
+
+        private void GetRetweetsSinceLastTweet()
+        {
+
+            ListRetweetsOfMyTweetsOptions myRetweetOptions = new ListRetweetsOfMyTweetsOptions();
+            //myRetweetOptions.SinceId = lastTweetID;
+            myRetweetOptions.Count = 100;
+
+            var tweets = service.ListRetweetsOfMyTweets(myRetweetOptions);
+
+
+            foreach (var tweet in tweets)
+            {
+                initialRetweets = initialRetweets + 1;
+                initialTotalRetweets = initialTotalRetweets + tweet.RetweetCount;
+            }
+            //MessageBox.Show( initialRetweets.ToString());
+            //MessageBox.Show( initialTotalRetweets.ToString());
+            
+        }
+
+        private long GetLastTweetID()
+        {
+            ListTweetsOnUserTimelineOptions userTimelineOptions = new ListTweetsOnUserTimelineOptions();
+            userTimelineOptions.Count = 1;
+            var tweets = service.ListTweetsOnUserTimeline(userTimelineOptions); 
+            long lastTweetId=0;
+            foreach (var tweet in tweets)
+            {
+                lastTweetId = tweet.Id;
+            }
+            //MessageBox.Show(lastTweetId.ToString());
+            return lastTweetId;
         }
 
         //service.AuthenticateWith(accessToken, accessTokenSecret);
 
         public void SetInitialCounters()
         {
-            FollowRequests = 3;
-            Mentions = 2;
-            Retweets = 1;
+            FollowRequests = 0;
+            Mentions = 0;
+            Retweets = 0;
         }
 
         public void SendTweet(String status)

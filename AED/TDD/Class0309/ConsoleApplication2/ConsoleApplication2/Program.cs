@@ -30,15 +30,17 @@ namespace ConsoleApplication2
             var service = new TwitterService("bWDpCLO2mIByqMYoaRh2Cg", "X4veUKVWhB09wipWhVpaVhXvLDHqzIjnOLOGXxiY8Y");
             //service.AuthenticateWith("21985278-dud1wSertHCQYTUK5ta5AA0ciqWB31ZsT8Dt8DJg", "yPDp2TTOOhQj6XDxX7P5TxmNtHZcQ6sJumth8DVzRk");
             service.AuthenticateWith("25963011-QuJkeaEcXqB92bhMxoIJHKBLFHP1rPZysu6K68IqZ", "pY0TXRW8aIUSDfSUpJAzsQ2s2Oay2A0HBdiaK1Z8");
-            //var tweets = service.ListTweetsOnHomeTimeline(new ListTweetsOnHomeTimelineOptions());
+             //var tweets = service.ListTweetsOnHomeTimeline(new ListTweetsOnHomeTimelineOptions());
+            var tweets = service.ListTweetsOnUserTimeline(new ListTweetsOnUserTimelineOptions());
+
             //var tweets = service.ListRetweetsOfMyTweets(new ListRetweetsOfMyTweetsOptions());
             //var tweets = service.ListFavoriteTweets(new ListFavoriteTweetsOptions());
-            var tweets = service.ListTweetsMentioningMe(new ListTweetsMentioningMeOptions());
+            //var tweets = service.ListTweetsMentioningMe(new ListTweetsMentioningMeOptions());
 
-            var MyTweetOptions = new SendTweetOptions();
-            MyTweetOptions.Status = "Hello World";
+            //var MyTweetOptions = new SendTweetOptions();
+            //MyTweetOptions.Status = "Hello World";
 
-            service.SendTweet(MyTweetOptions);
+            //service.SendTweet(MyTweetOptions);
             
             //var myFriendLists = service.GetIncomingFriendRequests(new GetIncomingFriendRequestsOptions());
 
@@ -55,10 +57,16 @@ namespace ConsoleApplication2
 
             //}
 
+            //Console.WriteLine(" count: {0}") tweets.Count.ToString());
+            int count = 0;
             foreach (var tweet in tweets)
             {
-                Console.WriteLine("{0} says '{1}'", tweet.Id, tweet.Text);
+                
+                count = count + 1;
+
+                Console.WriteLine("{0} says '{1}' count: {2}", tweet.Id, tweet.Text,count.ToString());
                 Console.ReadKey();
+                
 
             }
 

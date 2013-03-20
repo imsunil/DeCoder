@@ -21,9 +21,9 @@ namespace BuzzGenerator1
         {
             InitializeComponent();
             //TDashboardRefreshTimer = new Timer();
-            DashboardRefreshTimer.Interval = 5000;
-            DashboardRefreshTimer.Tick += new EventHandler(DashboardRefreshTimer_Tick);
-            DashboardRefreshTimer.Start();
+            //DashboardRefreshTimer.Interval = 5000;
+            //DashboardRefreshTimer.Tick += new EventHandler(DashboardRefreshTimer_Tick);
+            //DashboardRefreshTimer.Start();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -114,7 +114,7 @@ namespace BuzzGenerator1
         {
             if (sender == DashboardRefreshTimer)
             {
-                label1.Text = DateTime.Now.ToLongTimeString();
+               // label1.Text = DateTime.Now.ToLongTimeString();
             }
 
         }
